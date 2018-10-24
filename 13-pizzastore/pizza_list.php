@@ -1,5 +1,6 @@
 <!-- Le fichier Header.php est inclus sur la page -->
 <?php 
+$currentPageTitle = 'Nos pizzas';
 require_once(__DIR__.'/partials/header.php'); 
 ?>
 

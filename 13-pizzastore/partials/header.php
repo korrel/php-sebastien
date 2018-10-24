@@ -3,6 +3,7 @@
 // Le fichier database.php est inclus sur toutes les pages -->
 // ATTENTION on part du fichier HEADER qui inclus le fichier PHP
 require_once(__DIR__.'/../config/config.php'); 
+require_once(__DIR__.'/../config/database.php'); 
 
 ?>
 
@@ -17,7 +18,7 @@ require_once(__DIR__.'/../config/config.php');
 
     <title>
     <?php 
-        if ($currentPageTitle === null) {  // si on est sur la page d'accueil
+        if (empty($currentPageTitle)) {  // si on est sur la page d'accueil
             echo $siteName. ' - Notre pizzeria en ligne';
         }else { // si on est sur une autre page
             echo $currentPageTitle . ' - ' .$siteName;

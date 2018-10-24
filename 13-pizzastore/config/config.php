@@ -11,7 +11,8 @@
 $siteName = 'Pizza Store';
 
 // Page courante et titre de la balise Title
-$currentPageTitle = null;
+// $currentPageTitle = (empty ($currentPageTitle)) ? null : $currentPageTitle;
+
 // Si REQUEST_URI vaut /home/toto/fichier.php --> on enlève ".php"
 $currentPageUrl = basename ($_SERVER['REQUEST_URI'], '.php');
 
