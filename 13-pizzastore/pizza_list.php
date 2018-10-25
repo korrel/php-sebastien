@@ -40,7 +40,11 @@ $pizzas = $query -> fetchAll();
                         </div>
                         <div class="card-body">
                             <h4 class="card-title"><?= $pizza['name']?></h4>
-                            <a href="#" class="btn btn-danger">Commandez</a>
+
+                            <!-- On affiche une page avec un ID spécifique à chaque Pizza -->
+                            <a href="
+                            <?= "pizza_single.php?id=" . $pizza['id'] ?>
+                            " class="btn btn-danger">Commandez</a>
                         </div>
                     </div>
                 </div>

@@ -52,13 +52,13 @@ body {
 
 .slide {
     overflow: hidden;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     height: 200px;
 }
 
 .slide img {
     width: 100%;
-    border-radius: 50%;
+    border-radius: 30%;
     filter:brightness(50%);
 }
 
