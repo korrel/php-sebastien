@@ -27,7 +27,7 @@ $pizzas = $query -> fetchAll();
             <?php foreach ($pizzas as $pizza){ ?>
 
                 <div class="col-sm-6 col-md-6 col-lg-3">
-                    <div class="card mb-4">
+                    <div class="card card-encart mb-4">
                         <div class="card-img-top-container position-relative">
                             <img class="card-img card-img-top-zoom-effect" src ="assets/<?= $pizza['image']; ?>" alt ="<?= $pizza['name']; ?>">
                             <div class="pastille">

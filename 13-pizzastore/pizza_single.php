@@ -71,11 +71,11 @@ require_once(__DIR__.'/partials/header.php');
         <!-- //////////////////////////////  CONTENU DE LA PAGE /////////////////////////////// -->
         <div class="container pl-0 description-container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 p-0">
                     <img src ="assets/<?= $pizza['image']; ?>" alt ="<?= $pizza['name']; ?>" class="img-fluid img-description">
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-6 p-0">
+                    <div class="card card-description">
                         <h5 class="card-header"><?= $pizza['name']; ?></h5>
                         <div class="card-body">
                             <h5 class="card-title">Description de la pizza</h5>

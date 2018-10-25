@@ -50,6 +50,14 @@ body {
     /* bottom: -5%; */
 }
 
+.card-encart {
+    border-bottom-right-radius: 50px;
+}
+
+.card-description {
+    height: 100%;
+}
+
 .slide {
     overflow: hidden;
     margin-bottom: 30px;
