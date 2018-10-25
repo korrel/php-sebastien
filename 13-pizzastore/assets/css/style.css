@@ -1,0 +1,41 @@
+.page-title {
+    border-bottom: 1px solid #e8e8e8;
+    margin: 0 0 30px;
+    padding-bottom: 20px;
+}
+
+.card-img-top-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(20, 20, 20,1);
+}
+
+.card-img-top-zoom-effect{
+    transition: 0.5s;
+    filter:brightness(50%);
+}
+
+.card-img-top-zoom-effect:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    filter:brightness(100%);
+}
+
+.pastille {
+    position: absolute;
+    bottom: 50%;
+    background-color: #e91e1e;
+    border-radius: 60%;
+    padding: 10px;
+    color: #fff;
+    right: 65%;
+    transition: 0.5s;
+    transform: translate(-50%,-50%);
+}
+
+.card-img-top-container:hover .pastille {
+    color: #e91e1e;
+    background-color: #fff;
+    right: -5%;
+    bottom: -5%;
+}

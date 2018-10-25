@@ -15,7 +15,8 @@ require_once(__DIR__.'/../config/database.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="assets/img/favicon.ico">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>
     <?php 
         if (empty($currentPageTitle)) {  // si on est sur la page d'accueil
