@@ -37,21 +37,23 @@ require_once(__DIR__.'/../config/database.php');
     <!-- //////////////////////////////  NAVBAR  /////////////////////////////// -->
 
     <nav class="navbar navbar-expand-md navbar-dark bg-danger">
-      <a class="navbar-brand text-warning" href="index.php">
-      <?php echo $siteName; ?>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-pizzastore">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div class="container">
+        <a class="navbar-brand text-warning" href="index.php">
+        <?php echo $siteName; ?>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-pizzastore">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbar-pizzastore">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item <?= ($currentPageUrl === 'index')? 'active' : ''; ?>">
-            <a class="nav-link" href="index.php">Accueil</a>
-          </li>
-          <li class="nav-item <?= ($currentPageUrl === 'pizza_list')? 'active' : ''; ?>">
-            <a class="nav-link" href="pizza_list.php">Liste des pizzas</a>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbar-pizzastore">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item <?= ($currentPageUrl === 'index')? 'active' : ''; ?>">
+              <a class="nav-link" href="index.php">Accueil</a>
+            </li>
+            <li class="nav-item <?= ($currentPageUrl === 'pizza_list')? 'active' : ''; ?>">
+              <a class="nav-link" href="pizza_list.php">Liste des pizzas</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>

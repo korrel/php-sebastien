@@ -12,9 +12,15 @@ $pizzas = $query -> fetchAll();
     <!-- //////////////////////////////  MAIN  /////////////////////////////// -->
 
     <main class="container mt-5">
-        <h1 class="page-title">
-            <i class="fas fa-chart-pie"></i> Liste des pizzas
-        </h1>
+        <div class="row slide">
+            <div class="col">
+                <h1 class="page-title">
+                    <i class="fas fa-chart-pie"></i> Liste des pizzas
+                </h1>
+                <img src="assets/img/pizza-slide.jpg" class="img-fluid max-width: 100% height-auto" alt="Responsive image de la page Liste">
+            </div>
+        </div>
+
 
         <div class="row">
             <!-- On affiche les pizzas -->
@@ -23,9 +29,9 @@ $pizzas = $query -> fetchAll();
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="card mb-4">
                         <div class="card-img-top-container position-relative">
-                            <img class="card-img card-img-top-zoom-effect" src ="assets/img/4-fromages.jpg" alt =" <?= $pizza['name']; ?>">
+                            <img class="card-img card-img-top-zoom-effect" src ="assets/img/4-fromages.jpg" alt ="<?= $pizza['name']; ?>">
                             <div class="pastille">
-                                35€
+                                <?php echo str_replace('.',',', $pizza['price']); ?> €
                             </div>
                         </div>
                         <div class="card-body">

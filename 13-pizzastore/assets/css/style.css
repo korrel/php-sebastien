@@ -1,5 +1,15 @@
+
+body {
+    width: 100%;
+    height: 100%;
+    background: url(../img/texture.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 .page-title {
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 2px solid #dc3545;
     margin: 0 0 30px;
     padding-bottom: 20px;
 }
@@ -23,19 +33,44 @@
 
 .pastille {
     position: absolute;
-    bottom: 50%;
-    background-color: #e91e1e;
-    border-radius: 60%;
+    bottom: 5%;
+    background-color: #dc3545;
+    border-radius: 10% 50%;
     padding: 10px;
     color: #fff;
-    right: 65%;
+    right: 5%;
     transition: 0.5s;
-    transform: translate(-50%,-50%);
+    /* transform: translate(-50%,-50%); */
 }
 
 .card-img-top-container:hover .pastille {
     color: #e91e1e;
     background-color: #fff;
-    right: -5%;
-    bottom: -5%;
+    /* right: -5%; */
+    /* bottom: -5%; */
+}
+
+.slide {
+    overflow: hidden;
+    margin-bottom: 50px;
+    height: 200px;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 50%;
+    filter:brightness(50%);
+}
+
+.slide h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    z-index: 100;
+}
+
+.card {
+    border-bottom-right-radius: 20%;
 }
