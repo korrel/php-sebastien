@@ -74,3 +74,8 @@ body {
 .card {
     border-bottom-right-radius: 20%;
 }
+
+.card-price-cents {
+    vertical-align:super;
+    font-size:0.6rem;
+}

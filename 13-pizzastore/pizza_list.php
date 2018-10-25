@@ -31,7 +31,11 @@ $pizzas = $query -> fetchAll();
                         <div class="card-img-top-container position-relative">
                             <img class="card-img card-img-top-zoom-effect" src ="assets/img/4-fromages.jpg" alt ="<?= $pizza['name']; ?>">
                             <div class="pastille">
-                                <?php echo str_replace('.',',', $pizza['price']); ?> €
+                                <?php 
+                                //echo str_replace('.',',', $pizza['price']); 
+                                echo formatPrice($pizza['price']);
+                                
+                                ?>
                             </div>
                         </div>
                         <div class="card-body">

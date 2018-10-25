@@ -1,5 +1,7 @@
 <?php 
 
+// Inclusion du fichier functions.php
+require_once(__DIR__.'/../config/functions.php');
 // Le fichier database.php est inclus sur toutes les pages -->
 // ATTENTION on part du fichier HEADER qui inclus le fichier PHP
 require_once(__DIR__.'/../config/config.php'); 
