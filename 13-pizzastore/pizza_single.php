@@ -1,4 +1,4 @@
-<?php 
+<?php  ////////////////////////////////  PHP   ////////////////////////////////////////////////
 
 // Récupérer l'ID de la pizza dans l'url
 $id=isset($_GET['id'])? $_GET['id'] : 0;
@@ -15,10 +15,12 @@ if($pizza === false) {
     http_response_code(404); // network
     // on pourrait aussi rediriger l'utilisateur vers la liste des pizzas
     // header('location: pizza_list.php')
-    require_once(__DIR__.'/partials/header.php');?>
+    require_once(__DIR__.'/partials/header.php');
+    ?> <!-- //////////////////////////////////  HTML   //////////////////////////////////////////// -->
 
     <div class ="container">
         <h1 class="mt-5">404... Redirection dans 3 secondes !</h1>
+        <div style="width:400px;height:0;padding-bottom:50%;position:relative;margin:auto;"><iframe src="https://giphy.com/embed/Y4wgyGATg0rRYCZGOs" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/stickers/mini-italia-Y4wgyGATg0rRYCZGOs"></a></p>
     </div>
     <script>
         setTimeout(function(){
@@ -26,7 +28,8 @@ if($pizza === false) {
         }, 3000);
     </script>
 
-    <?php require_once(__DIR__.'/partials/footer.php'); 
+    <?php /////////////////////////////////   PHP   /////////////////////////////////////////////////
+    require_once(__DIR__.'/partials/footer.php'); 
     die();
 }
 
@@ -35,7 +38,7 @@ $currentPageTitle = $pizza['name'];
 // Le fichier Header.php est inclus sur la page
 require_once(__DIR__.'/partials/header.php'); 
 
-?>
+?> <!-- //////////////////////////////////////////////////////////////////////////////////////-->
 
     <!-- //////////////////////////////  MAIN  /////////////////////////////// -->
 
