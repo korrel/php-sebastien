@@ -29,7 +29,7 @@ $pizzas = $query -> fetchAll();
                 <div class="col-sm-6 col-md-6 col-lg-3">
                     <div class="card mb-4">
                         <div class="card-img-top-container position-relative">
-                            <img class="card-img card-img-top-zoom-effect" src ="assets/img/4-fromages.jpg" alt ="<?= $pizza['name']; ?>">
+                            <img class="card-img card-img-top-zoom-effect" src ="assets/<?= $pizza['image']; ?>" alt ="<?= $pizza['name']; ?>">
                             <div class="pastille">
                                 <?php 
                                 //echo str_replace('.',',', $pizza['price']); 
@@ -39,12 +39,10 @@ $pizzas = $query -> fetchAll();
                             </div>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title"><?= $pizza['name']?></h4>
+                            <h4 class="card-title"><?= $pizza['name'];?></h4>
 
                             <!-- On affiche une page avec un ID spécifique à chaque Pizza -->
-                            <a href="
-                            <?= "pizza_single.php?id=" . $pizza['id'] ?>
-                            " class="btn btn-danger">Commandez</a>
+                            <a href="pizza_single.php?id=<?= $pizza['id']; ?>" class="btn btn-danger">Commandez</a>
                         </div>
                     </div>
                 </div>

@@ -52,7 +52,7 @@ require_once(__DIR__.'/../config/database.php');
             <li class="nav-item <?= ($currentPageUrl === 'index')? 'active' : ''; ?>">
               <a class="nav-link" href="index.php">Accueil</a>
             </li>
-            <li class="nav-item <?= ($currentPageUrl === 'pizza_list' || 'pizza_single')? 'active' : ''; ?>">
+            <li class="nav-item <?= ($currentPageUrl === 'pizza_list')? 'active' : ''; ?>">
               <a class="nav-link" href="pizza_list.php">Liste des pizzas</a>
             </li>
           </ul>

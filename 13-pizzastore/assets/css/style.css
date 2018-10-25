@@ -52,7 +52,7 @@ body {
 
 .slide {
     overflow: hidden;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     height: 200px;
 }
 
@@ -71,11 +71,20 @@ body {
     z-index: 100;
 }
 
-.card {
+.card_02 {
     border-bottom-right-radius: 20%;
 }
 
 .card-price-cents {
     vertical-align:super;
     font-size:0.6rem;
+}
+
+.description-container {
+    border-bottom-left-radius: 50px;
+    overflow: hidden;
+}
+
+.img-description {
+    border-bottom-left-radius: 70px;
 }
