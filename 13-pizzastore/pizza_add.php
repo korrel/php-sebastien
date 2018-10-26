@@ -91,8 +91,10 @@ $pizzas = $query -> fetchAll();
                                         $errors['image'] = 'Ce type n\'est pas autorisé';
                                     }
 
-                                    // vérifier la taille du fichier
-
+                                    // vérifier la taille du fichier ( "size" est en octet / inférieur à 30ko autorisé )
+                                    if($image['size']/ 1024 > 30) {
+                                        $errors['image'] = 'L\'image ets trop lourde !';            
+                                    }
 
                                     if(!isset($errors['image'])){
                                         move_uploaded_file($file, __DIR__.'/assets/'.$fileName);   // on déplace le fichier uploadé où on le souhaite 
