@@ -55,7 +55,7 @@ $pizzas = $query -> fetchAll();
                             if (!empty($_POST)) { // Récupére les informations saisies dans le formulaire
                                 $nom = $_POST['nom'];
                                 $prix = str_replace(',','.',$_POST['prix']); // on remplace la virgule par un .
-                                $image = $_POST['image'];
+                                $image = $_FILES['image'];  // cela nous renvoie un tableau ( avec les spécificités du fichier uploadé dans /temp)
                                 $description = $_POST['description'];
                                 $categorie = $_POST['categorie'];
                             
@@ -67,7 +67,7 @@ $pizzas = $query -> fetchAll();
                                 if (!is_numeric($prix) || $prix <5 || $prix > 19.99) {
                                     $errors['prix'] = 'Le champs "prix" ne doit pas être vide. <br />';
                                 }
-                                if (empty($image)) {
+                                if ($image ['error'] === 4) {
                                     $errors['image'] = 'Le champs "image" ne doit pas être vide. <br />';
                                 }
                                 if (strlen($description) < 10) {
@@ -76,6 +76,29 @@ $pizzas = $query -> fetchAll();
                                 if (empty($categorie) || !in_array($categorie, ['Classique', 'Spicy','Hot', 'Végétarienne'])) {
                                     $errors['categorie'] = 'Le champs "catégorie" ne doit pas être vide. <br />';
                                 }
+
+                                // Upload de l'image
+                                //if(empty($errors)){
+                                    var_dump($image);  
+                                    $file = $image['tmp_name']; // Emplacement du fichier temporaire 
+                                    $fileName = 'img/pizzas/'.$image['name'];  // Variable pour la base de données
+
+                                    $finfo = finfo_open(FILEINFO_MIME_TYPE); // Permet d'ouvrir un fichier
+                                    $mineType = finfo_file($finfo, $file); // Ouvre le fichier et renvoie image/jpg
+                                    $allowedExtensions = ['image/jpg', 'image/jpeg', 'image/png', 'image/png'];
+                                    // Si l'extension n'est pas autorisée, il y a une erreur
+                                    if(!in_array($mineType, $allowedExtensions)){
+                                        $errors['image'] = 'Ce type n\'est pas autorisé';
+                                    }
+
+                                    // vérifier la taille du fichier
+
+
+                                    if(!isset($errors['image'])){
+                                        move_uploaded_file($file, __DIR__.'/assets/'.$fileName);   // on déplace le fichier uploadé où on le souhaite 
+                                    }                        
+                                //}
+
                                 if (empty($errors)) {
                                     $validation = 'Envoi du mail';
 
@@ -83,7 +106,7 @@ $pizzas = $query -> fetchAll();
                                     $query = $db ->prepare('INSERT INTO pizza(`name`,`price`,`image`, `categorie`,`description`) VALUES (:name, :price, :image, :categorie, :description)');
                                     $query -> bindValue(':name', $nom, PDO::PARAM_STR);
                                     $query -> bindValue(':price', $prix, PDO::PARAM_STR);
-                                    $query -> bindValue(':image', $image, PDO::PARAM_STR);
+                                    $query -> bindValue(':image', $fileName, PDO::PARAM_STR);
                                     $query -> bindValue(':description', $description, PDO::PARAM_STR);
                                     $query -> bindValue(':categorie', $categorie, PDO::PARAM_STR);
 
@@ -92,7 +115,7 @@ $pizzas = $query -> fetchAll();
                             }
                         ?>
 
-                            <form action="" method="POST">
+                            <form method="POST" enctype="multipart/form-data">
 
                                 <div class="form-group">
                                     <label for="nom" class="text-info">|| Nom de la pizza *</label>
@@ -112,7 +135,7 @@ $pizzas = $query -> fetchAll();
                                 </div>
                                 <div class="form-group">
                                     <label for="imagePizza" class="text-info">|| Sélectionner une image *</label>
-                                    <input type="text" name="image" class="form-control border-0 shadow-sm <?= (isset($errors['image'])) ? 'is-invalid' : ''; ?>" id="imagePizza" value="<?php echo $image; ?>" placeholder="URL de l'image de la pizza ..." >
+                                    <input type="file" name="image" class="form-control border-0 shadow-sm <?= (isset($errors['image'])) ? 'is-invalid' : ''; ?>" id="imagePizza" placeholder="URL de l'image de la pizza ..." >
                                     <?php 
                                     if(isset($errors['image'])) {
                                         echo '<div class="invalid-feedback">'.$errors['image'].'</div>';
@@ -133,9 +156,9 @@ $pizzas = $query -> fetchAll();
                                     <label for="categorie" class="text-info">|| Sélectionner une catégorie *</label>
                                     <select class="form-control border-0 shadow-sm text-secondary <?= (isset($errors['categorie'])) ? 'is-invalid' : ''; ?>" name="categorie" id="categorie">
                                         <option value ="">Choisir la catégorie</option>
-                                        <option <?php echo($categorie === "classic") ? 'selected' : ''; ?> value ="classic">Classique</option>
-                                        <option <?php echo($categorie === "spicy") ? 'selected' : ''; ?> value ="spicy">Spicy</option>
-                                        <option <?php echo($categorie === "hot") ? 'selected' : ''; ?> value ="hot">Hot</option>
+                                        <option <?php echo($categorie === "Classique") ? 'selected' : ''; ?> value ="Classique">Classique</option>
+                                        <option <?php echo($categorie === "Spicy") ? 'selected' : ''; ?> value ="Spicy">Spicy</option>
+                                        <option <?php echo($categorie === "Hot") ? 'selected' : ''; ?> value ="Hot">Hot</option>
                                         <option <?php echo($categorie === "Végétarienne") ? 'selected' : ''; ?> value ="Végétarienne">Végétarienne</option>
                                     </select>
                                     <?php 
