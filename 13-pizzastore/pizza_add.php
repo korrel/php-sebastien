@@ -32,7 +32,7 @@ $pizzas = $query -> fetchAll();
                     </button>
 
                     <!-- Le Modal -->
-                    <div class="modal fade" id="ajouterPizza" tabindex="-1" role="dialog" aria-labelledby="ajouterPizzaTitle" aria-hidden="true">
+                    <div class="modal fade" id="ajouterPizza" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard = "false" aria-labelledby="ajouterPizzaTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                         <div class="modal-header bg-danger text-white">
@@ -70,20 +70,22 @@ $pizzas = $query -> fetchAll();
                                 if (empty($image)) {
                                     $errors['image'] = 'Le champs "image" ne doit pas être vide. <br />';
                                 }
-                                if (empty($description)) {
+                                if (strlen($description) < 10) {
                                     $errors['description'] = 'Le champs "description" ne doit pas être vide. <br />';
                                 }
-                                if (empty($categorie)) {
+                                if (empty($categorie) || !in_array($categorie, ['Classique', 'Spicy','Hot', 'Végétarienne'])) {
                                     $errors['categorie'] = 'Le champs "catégorie" ne doit pas être vide. <br />';
                                 }
                                 if (empty($errors)) {
                                     $validation = 'Envoi du mail';
 
                                     // envoie à la base de donnée
-                                    $query = $db ->prepare('INSERT INTO pizza(`name`,`price`,`image`) VALUES (:name, :price, :image)');
+                                    $query = $db ->prepare('INSERT INTO pizza(`name`,`price`,`image`, `categorie`,`description`) VALUES (:name, :price, :image, :categorie, :description)');
                                     $query -> bindValue(':name', $nom, PDO::PARAM_STR);
                                     $query -> bindValue(':price', $prix, PDO::PARAM_STR);
                                     $query -> bindValue(':image', $image, PDO::PARAM_STR);
+                                    $query -> bindValue(':description', $description, PDO::PARAM_STR);
+                                    $query -> bindValue(':categorie', $categorie, PDO::PARAM_STR);
 
                                     $query -> execute();
                                 }
@@ -130,9 +132,11 @@ $pizzas = $query -> fetchAll();
                                 <div class="form-group">
                                     <label for="categorie" class="text-info">|| Sélectionner une catégorie *</label>
                                     <select class="form-control border-0 shadow-sm text-secondary <?= (isset($errors['categorie'])) ? 'is-invalid' : ''; ?>" name="categorie" id="categorie">
-                                    <option>Viande</option>
-                                    <option>Végétarienne</option>
-                                    <option>Poisson</option>
+                                        <option value ="">Choisir la catégorie</option>
+                                        <option <?php echo($categorie === "classic") ? 'selected' : ''; ?> value ="classic">Classique</option>
+                                        <option <?php echo($categorie === "spicy") ? 'selected' : ''; ?> value ="spicy">Spicy</option>
+                                        <option <?php echo($categorie === "hot") ? 'selected' : ''; ?> value ="hot">Hot</option>
+                                        <option <?php echo($categorie === "Végétarienne") ? 'selected' : ''; ?> value ="Végétarienne">Végétarienne</option>
                                     </select>
                                     <?php 
                                     if(isset($errors['categorie'])) {
@@ -140,7 +144,7 @@ $pizzas = $query -> fetchAll();
                                     }?>
                                 </div>
                     
-                                <button class="btn btn-danger btn-block">Ajouter</button>
+                                <button type="submit" class="btn btn-danger btn-block">Ajouter</button>
 
                             </form>
 
